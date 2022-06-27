@@ -1,0 +1,100 @@
+// @import url('https://fonts.googleapis.com/css?family=Roboto+Serif:400,700.css');
+// @import url('https://fonts.googleapis.com/css?family=Roboto:400,700.css');
+
+@import 'colors.less';
+.app {
+  font-family: Roboto, Helvetica Neue, Helvetica, Arial, sans-serif;
+  margin: auto auto;
+  max-width: 1350px;
+  width: 100%;
+  .vis_container {
+    align-items: flex-start;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    .question_container {
+      box-sizing: border-box;
+      display: inline-block;
+      margin-bottom: 50px;
+      padding: 20px;
+      width: calc(50%);
+      @media all and (max-width: 700px) {
+        width: 100%;
+        &:nth-child(even) {
+          background-color: rgba(124, 112, 103, 0.2);
+        }
+      }
+      h3 {
+        background-color: #0077b8;
+        color: #fff;
+        padding: 20px;
+      }
+      .answer_yes {
+        display: block;
+        h4 {
+          &:after {
+            border-bottom: 3px solid #27833a;
+            content:'';
+            display: block;
+            width: 200px;
+          }
+        }
+      }
+      .answer_no {
+        display: block;
+        h4 {
+          &:after {
+            border-bottom: 3px solid #eb0045;
+            content:'';
+            display: block;
+            width: 200px;
+          }
+        }
+      }
+      .no_answer {
+        filter: grayscale(100%);
+        h4 {
+          &:after {
+            border-bottom: 3px solid #7c7067;
+            content:'';
+            display: block;
+            width: 200px;
+          }
+        }
+      }
+      .flag_container {
+        align-content: center;
+        align-items: center;
+        cursor: pointer;
+        display: inline-flex;
+        font-size: 0;
+        height: 38px;
+        justify-content: center;
+        margin: 2px;
+        position: relative;
+        width: 38px;
+        img {
+          background-color: #fff;
+          border-radius: 50%;
+          border: 2px solid #009edb;
+          height: 0;
+          margin: 2px;
+          opacity: 0;
+          padding: 2px;
+          position: absolute;
+          transition: transform 0.2s ease-in-out; 
+          z-index: 1;
+          &:hover {
+            transform: scale(1.5);
+            z-index: 2;
+          }
+        }
+      }
+    }
+  }
+}
+
+@import 'basics.less';
