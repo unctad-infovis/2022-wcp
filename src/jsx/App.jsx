@@ -26,22 +26,33 @@ import { CircleFlag } from 'react-circle-flags'
 import formatNr from './helpers/formatNr.js';
 import roundNr from './helpers/roundNr.js';
 
-
 const App = () => {
   // Data states.
   const [data, setData] = useState(false);
+  const [countries, setCountries] = useState(false);
+  const [selectedCountry, setSelectedCountry] = useState(false);
   
   useEffect(() => {
     const data_file = (window.location.href.includes('unctad.org')) ? '/sites/default/files/data-file/2022-wcp.json' : './data/data.json';
     try {
       d3.json(data_file).then((json_data) => {
         setData(cleanData(json_data));
+        setCountries(getCountries(json_data));
       });
     }
     catch (error) {
       console.error(error);
     }
   }, []);
+
+  const getCountries = (json_data) => {
+    return json_data.map((el) => {
+      return {
+        country_code: el['Code2Digit'],
+        country: el['Country name']
+      }
+    });
+  }
 
   const cleanData = (json_data) => { 
     const tmp_data = {
@@ -59,9 +70,9 @@ const App = () => {
     }
 
     json_data.forEach((el) => {
-      Object.keys(tmp_data).forEach(question => {
-        tmp_data[question].push({
-          answer: el[question],
+      Object.keys(tmp_data).forEach(element => {
+        tmp_data[element].push({
+          answer: el[element],
           country: el['Country name'],
           country_code: el['Code2Digit']
         });
@@ -79,7 +90,6 @@ const App = () => {
     const vis_container = d3.select('.' + container);
     [style.answer_yes, style.answer_no, style.no_answer].forEach(el => {
       vis_container.selectAll('.' + el + ' img')
-        .style('opacity', 0)
         .style('height', 0)
         .style('width', 0)
         .transition()
@@ -94,27 +104,55 @@ const App = () => {
           .style('height', '30px')
           .style('width', '30px')
           .ease(d3.easeBounceOut)
-        .style('opacity', d => 1)
+        .style('opacity', d => {
+          return (selectedCountry === false) ? 1 : 0.4;
+        });
+    });
+  }
+
+  const changeHighlight = () => {
+    document.querySelectorAll('.' + style.flag_container).forEach((el) => {
+      el.classList.remove(style.highlighted);
+      if (el.classList.contains(event.target.value)) {
+        el.classList.remove(style.background);
+        el.classList.add(style.highlighted);
+      }
+      else if (event.target.value !== '') {
+        el.classList.add(style.background);
+      }
+      else {
+        el.classList.remove(style.background);
+      }
     });
   }
 
   return (
     <div className={style.app}>
+      <div className={style.search_container}>
+        <h3>Highlight a country</h3>
+        <select onChange={() => changeHighlight()}>
+          <option value={''}>Select a country to highlight</option>
+          <option value={''} disabled={true}>– – – – –</option>
+          {
+            countries && countries.map((el, i) => <option key={i} value={el.country_code}>{el.country}</option>)
+          }
+        </select>
+      </div>
       <div className={style.vis_container}>
         {
-          data && Object.keys(data).map((question, i) => {
+          data && Object.keys(data).map((element, i) => {
             return (
-              <div key={question} className={'question_' + i + ' ' + style.question_container}>
-                <h3>{question}</h3>
+              <div key={element} className={'element_' + i + ' ' + style.element_container}>
+                <h3>{element}</h3>
                 <IsVisible once>
                   {(isVisible) => 
                     <div className={style.answer_yes}>
-                      {isVisible && createVis('question_' + i)}
-                      <h4>Yes, {data[question].filter(el => el.answer === 1).length} countries</h4>
+                      {isVisible && createVis('element_' + i)}
+                      <h4>Yes, {data[element].filter(el => el.answer === 1).length} countries</h4>
                       {
-                        data[question].map((el, j) => {
+                        data[element].map((el, j) => {
                           if (el.answer === 1) {
-                            return <div className={style.flag_container} key={i + '_' + j} data-tip={el.country}><CircleFlag data-tip={el.country} height={0} countryCode={el.country_code.toLowerCase()} /></div>
+                            return <div className={style.flag_container + ' ' + el.country_code} key={i + '_' + j} data-tip={el.country}><CircleFlag data-tip={el.country} height={0} countryCode={el.country_code.toLowerCase()} /></div>
                           }
                         })
                       }
@@ -122,21 +160,21 @@ const App = () => {
                   }
                 </IsVisible>
                 <div className={style.answer_no}>
-                  <h4>No, {data[question].filter(el => el.answer === 0).length} countries</h4>
+                  <h4>No, {data[element].filter(el => el.answer === 0).length} countries</h4>
                   {
-                    data[question].map((el, j) => {
+                    data[element].map((el, j) => {
                       if (el.answer === 0) {
-                        return <div className={style.flag_container} key={i + '_' + j} data-tip={el.country}><CircleFlag data-tip={el.country} height={0} countryCode={el.country_code.toLowerCase()} /></div>
+                        return <div className={style.flag_container} key={i + '_' + j} data-tip={el.country}><CircleFlag className={el.country_code} data-tip={el.country} height={0} countryCode={el.country_code.toLowerCase()} /></div>
                       }
                     })
                   }
                 </div>
                 <div className={style.no_answer}>
-                  <h4>No answer, {data[question].filter(el => el.answer === null).length} countries</h4>
+                  <h4>No answer, {data[element].filter(el => el.answer === null).length} countries</h4>
                   {
-                    data[question].map((el, j) => {
+                    data[element].map((el, j) => {
                       if (el.answer === null) {
-                        return <div className={style.flag_container} key={i + '_' + j} data-tip={el.country}><CircleFlag data-tip={el.country} height={0} countryCode={el.country_code.toLowerCase()} /></div>
+                        return <div className={style.flag_container} key={i + '_' + j} data-tip={el.country}><CircleFlag className={el.country_code} data-tip={el.country} height={0} countryCode={el.country_code.toLowerCase()} /></div>
                       }
                     })
                   }
