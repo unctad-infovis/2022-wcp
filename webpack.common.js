@@ -8,7 +8,7 @@ module.exports = {
   entry: {
     app: './src/index.js'
   },
-  name:'2022-wcp',
+  name:name,
   module: {
     rules: [
       {
