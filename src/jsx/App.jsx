@@ -32,7 +32,7 @@ const App = () => {
   const [selectedCountry, setselectedCountry] = useState(false);
   
   useEffect(() => {
-    const data_file = (window.location.href.includes('unctad.org')) ? '/sites/default/files/data-file/2022-wcp.json' : './media/data/data.json';
+    const data_file = (window.location.href.includes('unctad.org')) ? '/sites/default/files/data-file/2022-wcp.json' : './assets/data/data.json';
     try {
       d3.json(data_file).then((json_data) => {
         setData(cleanData(json_data));
