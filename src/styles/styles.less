@@ -85,6 +85,8 @@
       .flag_container {
         align-content: center;
         align-items: center;
+        background-color: transparent;
+        border: 0;
         cursor: pointer;
         display: inline-flex;
         font-size: 0;
@@ -106,12 +108,13 @@
           background-color: #fff;
           border-radius: 50%;
           border: 2px solid #009edb;
+          display: inline-block;
           height: 0;
           margin: 2px;
           opacity: 0;
           padding: 2px;
+          pointer-events: none;
           position: absolute;
-          display: inline-block;
           transition: transform 0.2s ease-in-out; 
           z-index: 1;
         }

@@ -30,7 +30,7 @@ const App = () => {
   // Data states.
   const [data, setData] = useState(false);
   const [countries, setCountries] = useState(false);
-  const [selectedCountry, setSelectedCountry] = useState(false);
+  const [selectedCountry, setselectedCountry] = useState(false);
   
   useEffect(() => {
     const data_file = (window.location.href.includes('unctad.org')) ? '/sites/default/files/data-file/2022-wcp.json' : './data/data.json';
@@ -82,38 +82,43 @@ const App = () => {
   }
 
   useEffect(() => {
+    ReactTooltip.rebuild();
     createVis();
   }, [data]);
 
   const createVis = (container) => {
-    ReactTooltip.rebuild()
-    const vis_container = d3.select('.' + container);
-    [style.answer_yes, style.answer_no, style.no_answer].forEach(el => {
-      vis_container.selectAll('.' + el + ' img')
-        .style('height', 0)
-        .style('width', 0)
-        .transition()
-          .duration(500)
-          .delay((d, i) => 30 * i)
-          .style('height', '50px')
-          .style('width', '50px')
-          .ease(d3.easeBounceOut)
-        .transition()
-          .duration(200)
-          .delay((d, i) => 30 * i)
-          .style('height', '30px')
-          .style('width', '30px')
-          .ease(d3.easeBounceOut)
-        .style('opacity', d => {
-          return (selectedCountry === false) ? 1 : 0.4;
-        });
-    });
+    if (container) {
+      const vis_container = d3.select('.' + container + ':not(.visualised)');
+      [style.answer_yes, style.answer_no, style.no_answer].forEach(el => {
+        vis_container.selectAll('.' + el + ' img')
+          .style('height', 0)
+          .style('width', 0)
+          .style('opacity', 0)
+          .transition()
+            .duration(500)
+            .delay((d, i) => 30 * i)
+            .style('height', '50px')
+            .style('width', '50px')
+            .ease(d3.easeBounceOut)
+          .transition()
+            .duration(200)
+            .delay((d, i) => 30 * i)
+            .style('height', '30px')
+            .style('width', '30px')
+            .ease(d3.easeBounceOut)
+          .style('opacity', d => 1);
+      });
+      vis_container.classed('visualised', true);
+    }
   }
 
   const changeHighlight = () => {
     document.querySelectorAll('.' + style.flag_container).forEach((el) => {
       el.classList.remove(style.highlighted);
-      if (el.classList.contains(event.target.value)) {
+      if (event.target.value === selectedCountry) {
+        el.classList.remove(style.background);
+      }
+      else if (el.classList.contains(event.target.value)) {
         el.classList.remove(style.background);
         el.classList.add(style.highlighted);
       }
@@ -124,13 +129,14 @@ const App = () => {
         el.classList.remove(style.background);
       }
     });
+    setselectedCountry((event.target.value === selectedCountry) ? '' : event.target.value);
   }
 
   return (
     <div className={style.app}>
       <div className={style.search_container}>
         <h3>Highlight a country</h3>
-        <select onChange={() => changeHighlight()}>
+        <select onChange={() => changeHighlight()} value={selectedCountry}>
           <option value={''}>Select a country to highlight</option>
           <option value={''} disabled={true}>– – – – –</option>
           {
@@ -152,7 +158,7 @@ const App = () => {
                       {
                         data[element].map((el, j) => {
                           if (el.answer === 1) {
-                            return <div className={style.flag_container + ' ' + el.country_code} key={i + '_' + j} data-tip={el.country}><CircleFlag data-tip={el.country} height={0} countryCode={el.country_code.toLowerCase()} /></div>
+                            return <button className={style.flag_container + ' ' + el.country_code} key={i + '_' + j} data-tip={el.country} onClick={() => changeHighlight()} value={el.country_code}><CircleFlag data-tip={el.country} height={0} countryCode={el.country_code.toLowerCase()} value={el.country_code} /></button>
                           }
                         })
                       }
@@ -164,7 +170,7 @@ const App = () => {
                   {
                     data[element].map((el, j) => {
                       if (el.answer === 0) {
-                        return <div className={style.flag_container} key={i + '_' + j} data-tip={el.country}><CircleFlag className={el.country_code} data-tip={el.country} height={0} countryCode={el.country_code.toLowerCase()} /></div>
+                        return <button className={style.flag_container + ' ' + el.country_code} key={i + '_' + j} data-tip={el.country} onClick={() => changeHighlight()} value={el.country_code}><CircleFlag data-tip={el.country} height={0} countryCode={el.country_code.toLowerCase()} value={el.country_code} /></button>
                       }
                     })
                   }
@@ -174,7 +180,7 @@ const App = () => {
                   {
                     data[element].map((el, j) => {
                       if (el.answer === null) {
-                        return <div className={style.flag_container} key={i + '_' + j} data-tip={el.country}><CircleFlag className={el.country_code} data-tip={el.country} height={0} countryCode={el.country_code.toLowerCase()} /></div>
+                        return <button className={style.flag_container + ' ' + el.country_code} key={i + '_' + j} data-tip={el.country} onClick={() => changeHighlight()} value={el.country_code}><CircleFlag data-tip={el.country} height={0} countryCode={el.country_code.toLowerCase()} value={el.country_code} /></button>
                       }
                     })
                   }
