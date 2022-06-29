@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import ReactDOM from 'react-dom'
-import style from './../styles/styles.less';
+import './../styles/styles.less';
 
 // https://d3js.org/
 import * as d3 from 'd3';
@@ -33,7 +32,7 @@ const App = () => {
   const [selectedCountry, setselectedCountry] = useState(false);
   
   useEffect(() => {
-    const data_file = (window.location.href.includes('unctad.org')) ? '/sites/default/files/data-file/2022-wcp.json' : './data/data.json';
+    const data_file = (window.location.href.includes('unctad.org')) ? '/sites/default/files/data-file/2022-wcp.json' : './media/data/data.json';
     try {
       d3.json(data_file).then((json_data) => {
         setData(cleanData(json_data));
@@ -89,7 +88,7 @@ const App = () => {
   const createVis = (container) => {
     if (container) {
       const vis_container = d3.select('.' + container + ':not(.visualised)');
-      [style.answer_yes, style.answer_no, style.no_answer].forEach(el => {
+      ['answer_yes', 'answer_no', 'no_answer'].forEach(el => {
         vis_container.selectAll('.' + el + ' img')
           .style('height', 0)
           .style('width', 0)
@@ -113,28 +112,28 @@ const App = () => {
   }
 
   const changeHighlight = () => {
-    document.querySelectorAll('.' + style.flag_container).forEach((el) => {
-      el.classList.remove(style.highlighted);
+    document.querySelectorAll('.' + 'flag_container').forEach((el) => {
+      el.classList.remove('highlighted');
       if (event.target.value === selectedCountry) {
-        el.classList.remove(style.background);
+        el.classList.remove('background');
       }
       else if (el.classList.contains(event.target.value)) {
-        el.classList.remove(style.background);
-        el.classList.add(style.highlighted);
+        el.classList.remove('background');
+        el.classList.add('highlighted');
       }
       else if (event.target.value !== '') {
-        el.classList.add(style.background);
+        el.classList.add('background');
       }
       else {
-        el.classList.remove(style.background);
+        el.classList.remove('background');
       }
     });
     setselectedCountry((event.target.value === selectedCountry) ? '' : event.target.value);
   }
 
   return (
-    <div className={style.app}>
-      <div className={style.search_container}>
+    <div className={'app'}>
+      <div className={'search_container'}>
         <h3>Highlight a country</h3>
         <select onChange={() => changeHighlight()} value={selectedCountry}>
           <option value={''}>Select a country to highlight</option>
@@ -144,43 +143,43 @@ const App = () => {
           }
         </select>
       </div>
-      <div className={style.vis_container}>
+      <div className={'vis_container'}>
         {
           data && Object.keys(data).map((element, i) => {
             return (
-              <div key={element} className={'element_' + i + ' ' + style.element_container}>
+              <div key={element} className={'element_' + i + ' ' + 'element_container'}>
                 <h3>{element}</h3>
                 <IsVisible once>
                   {(isVisible) => 
-                    <div className={style.answer_yes}>
+                    <div className={'answer_yes'}>
                       {isVisible && createVis('element_' + i)}
                       <h4>Yes, {data[element].filter(el => el.answer === 1).length} countries</h4>
                       {
                         data[element].map((el, j) => {
                           if (el.answer === 1) {
-                            return <button className={style.flag_container + ' ' + el.country_code} key={i + '_' + j} data-tip={el.country} onClick={() => changeHighlight()} value={el.country_code}><CircleFlag data-tip={el.country} height={0} countryCode={el.country_code.toLowerCase()} value={el.country_code} /></button>
+                            return <button className={'flag_container' + ' ' + el.country_code} key={i + '_' + j} data-tip={el.country} onClick={() => changeHighlight()} value={el.country_code}><CircleFlag data-tip={el.country} height={0} countryCode={el.country_code.toLowerCase()} value={el.country_code} /></button>
                           }
                         })
                       }
                     </div>
                   }
                 </IsVisible>
-                <div className={style.answer_no}>
+                <div className={'answer_no'}>
                   <h4>No, {data[element].filter(el => el.answer === 0).length} countries</h4>
                   {
                     data[element].map((el, j) => {
                       if (el.answer === 0) {
-                        return <button className={style.flag_container + ' ' + el.country_code} key={i + '_' + j} data-tip={el.country} onClick={() => changeHighlight()} value={el.country_code}><CircleFlag data-tip={el.country} height={0} countryCode={el.country_code.toLowerCase()} value={el.country_code} /></button>
+                        return <button className={'flag_container' + ' ' + el.country_code} key={i + '_' + j} data-tip={el.country} onClick={() => changeHighlight()} value={el.country_code}><CircleFlag data-tip={el.country} height={0} countryCode={el.country_code.toLowerCase()} value={el.country_code} /></button>
                       }
                     })
                   }
                 </div>
-                <div className={style.no_answer}>
+                <div className={'no_answer'}>
                   <h4>No answer, {data[element].filter(el => el.answer === null).length} countries</h4>
                   {
                     data[element].map((el, j) => {
                       if (el.answer === null) {
-                        return <button className={style.flag_container + ' ' + el.country_code} key={i + '_' + j} data-tip={el.country} onClick={() => changeHighlight()} value={el.country_code}><CircleFlag data-tip={el.country} height={0} countryCode={el.country_code.toLowerCase()} value={el.country_code} /></button>
+                        return <button className={'flag_container' + ' ' + el.country_code} key={i + '_' + j} data-tip={el.country} onClick={() => changeHighlight()} value={el.country_code}><CircleFlag data-tip={el.country} height={0} countryCode={el.country_code.toLowerCase()} value={el.country_code} /></button>
                       }
                     })
                   }
