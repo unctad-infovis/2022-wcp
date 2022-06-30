@@ -26,6 +26,8 @@ module.exports = {
           {
             loader: 'css-loader',
             options: {
+              sourceMap: true,
+              url: false
             }
           },
           {
@@ -40,12 +42,11 @@ module.exports = {
       },
       {
         test: /\.(png|jp(e*)g|svg|gif)$/,
-        type: 'asset/resource',
         use: [
           {
             loader: 'file-loader',
             options: {
-              name: 'assets/img/[name].[ext]'
+              emitFile: false
             }
           }
         ]
