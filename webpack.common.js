@@ -67,6 +67,9 @@ module.exports = {
       title: name,
       template: "./src/html/index.html",
       filename: "./index.html"
-    }),
-  ]
+    })
+  ],
+  resolve: {
+    extensions: ['.js', '.jsx'],
+  }
 };

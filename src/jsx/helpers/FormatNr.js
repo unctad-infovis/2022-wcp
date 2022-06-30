@@ -14,5 +14,6 @@ const formatNr = (x, separator = ',', unit = '', prefix = '', addComma = false, 
     x += '.0';
   }
   return x === '' ? 0 : extra + prefix + x + unit;
-}
+};
+
 export default formatNr;
