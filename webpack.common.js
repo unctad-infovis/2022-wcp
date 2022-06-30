@@ -46,7 +46,8 @@ module.exports = {
           {
             loader: 'file-loader',
             options: {
-              emitFile: false
+              emitFile: false,
+              name:'[path][name].[ext]'
             }
           }
         ]
