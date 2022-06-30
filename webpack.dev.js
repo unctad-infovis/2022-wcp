@@ -15,7 +15,8 @@ module.exports = merge(common, {
   mode: 'development',
   plugins: [
     new ESLintPlugin({
-      extensions: ['js', 'jsx']
+      extensions: ['js', 'jsx'],
+      fix: true
     }),
     new CopyPlugin({
       patterns: [
