@@ -1,7 +1,7 @@
 @import 'colors.less';
 
 #app-root-2022-wcp .app {
-  font-family: Roboto;
+  font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
   margin: auto auto;
   max-width: 1350px;
   width: 100%;
@@ -93,6 +93,7 @@
         margin: 2px;
         position: relative;
         width: 38px;
+        transition: transform 0.2s ease-in-out;
         &.highlighted,
         &:hover {
           opacity: 1;
@@ -113,7 +114,6 @@
           padding: 2px;
           pointer-events: none;
           position: absolute;
-          transition: transform 0.2s ease-in-out; 
           z-index: 1;
         }
       }

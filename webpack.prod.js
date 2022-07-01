@@ -4,7 +4,6 @@ const name = require('./package.json').name;
 const CopyPlugin = require('copy-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
-const ESLintPlugin = require('eslint-webpack-plugin');
 
 module.exports = merge(common, {
   mode:'production',
@@ -24,9 +23,9 @@ module.exports = merge(common, {
   plugins: [
     new CopyPlugin({
       patterns: [
-        { from: 'assets/img/', to: '../public/assets/img', noErrorOnMissing: true},
+        { from: 'assets/img/', to: '../public/assets/img/', noErrorOnMissing: true},
         { from: 'assets/data/data.json', to: '../public/assets/data/data.json', noErrorOnMissing: true},
-        { from: 'src/font/', to: '../public/font', noErrorOnMissing: true},
+        { from: 'src/font/', to: '../public/font/', noErrorOnMissing: true},
         { from: './favicon.png', to: '../public', noErrorOnMissing: true}
       ]
     })
