@@ -11,15 +11,7 @@ import IsVisible from 'react-is-visible';
 // https://www.npmjs.com/package/react-tooltip
 import ReactTooltip from 'react-tooltip';
 
-// https://www.npmjs.com/package/react-circle-flags
-import { CircleFlag } from 'react-circle-flags';
-
-// https://www.highcharts.com/
-// import Highcharts from 'highcharts';
-// import highchartsAccessibility from 'highcharts/modules/accessibility';
-// highchartsAccessibility(Highcharts);
-// import highchartsExporting from 'highcharts/modules/exporting';
-// highchartsExporting(Highcharts);
+import CountryButton from './helpers/CountryButton.jsx';
 
 function App() {
   // Data states.
@@ -146,12 +138,7 @@ function App() {
                     {isVisible && createVis(`element_${i}`)}
                     <h4>{`Yes, ${data[element].filter(el => el.answer === 1).length} countries`}</h4>
                     {
-                      data[element].map(el => {
-                        if (el.answer === 1) {
-                          return <button className={`flag_container ${el.country_code}`} key={el.country_code} aria-label={`Highlight ${el.country}`} type="button" data-tip={el.country} onClick={(event) => changeHighlight(event)} value={el.country_code}><CircleFlag data-tip={el.country} height={0} countryCode={el.country_code.toLowerCase()} value={el.country_code} /></button>;
-                        }
-                        return false;
-                      })
+                      data[element].map(el => ((el.answer === 1) ? <CountryButton key={el.country_code} el={el} changeHighlight={changeHighlight} /> : null))
                     }
                   </div>
                 )}
@@ -159,23 +146,13 @@ function App() {
               <div className="answer_no">
                 <h4>{`No, ${data[element].filter(el => el.answer === 0).length} countries`}</h4>
                 {
-                  data[element].map(el => {
-                    if (el.answer === 0) {
-                      return <button className={`flag_container ${el.country_code}`} key={el.country_code} data-tip={el.country} aria-label={`Highlight ${el.country}`} type="button" onClick={(event) => changeHighlight(event)} value={el.country_code}><CircleFlag data-tip={el.country} height={0} countryCode={el.country_code.toLowerCase()} value={el.country_code} /></button>;
-                    }
-                    return false;
-                  })
+                  data[element].map(el => ((el.answer === 0) ? <CountryButton key={el.country_code} el={el} changeHighlight={changeHighlight} /> : null))
                 }
               </div>
               <div className="no_answer">
                 <h4>{`No answer, ${data[element].filter(el => el.answer === null).length} countries`}</h4>
                 {
-                  data[element].map(el => {
-                    if (el.answer === null) {
-                      return <button className={`flag_container ${el.country_code}`} key={el.country_code} data-tip={el.country} aria-label={`Highlight ${el.country}`} type="button" onClick={(event) => changeHighlight(event)} value={el.country_code}><CircleFlag data-tip={el.country} height={0} countryCode={el.country_code.toLowerCase()} value={el.country_code} /></button>;
-                    }
-                    return false;
-                  })
+                  data[element].map(el => ((el.answer === null) ? <CountryButton key={el.country_code} el={el} changeHighlight={changeHighlight} /> : null))
                 }
               </div>
             </div>
