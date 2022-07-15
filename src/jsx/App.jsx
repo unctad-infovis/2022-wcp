@@ -125,7 +125,7 @@ function App() {
     <div className="app">
       <div className="search_container">
         <h3>Highlight a country</h3>
-        <select onChange={() => changeHighlight()} value={selectedCountry}>
+        <select onChange={(event) => changeHighlight(event)} value={selectedCountry}>
           <option value={false}>Select a country to highlight</option>
           <option value={false} disabled="disabled">– – – – –</option>
           {
@@ -148,7 +148,7 @@ function App() {
                     {
                       data[element].map(el => {
                         if (el.answer === 1) {
-                          return <button className={`flag_container ${el.country_code}`} key={el.country_code} aria-label={`Highlight ${el.country}`} type="button" data-tip={el.country} onClick={() => changeHighlight()} value={el.country_code}><CircleFlag data-tip={el.country} height={0} countryCode={el.country_code.toLowerCase()} value={el.country_code} /></button>;
+                          return <button className={`flag_container ${el.country_code}`} key={el.country_code} aria-label={`Highlight ${el.country}`} type="button" data-tip={el.country} onClick={(event) => changeHighlight(event)} value={el.country_code}><CircleFlag data-tip={el.country} height={0} countryCode={el.country_code.toLowerCase()} value={el.country_code} /></button>;
                         }
                         return false;
                       })
@@ -161,7 +161,7 @@ function App() {
                 {
                   data[element].map(el => {
                     if (el.answer === 0) {
-                      return <button className={`flag_container ${el.country_code}`} key={el.country_code} data-tip={el.country} aria-label={`Highlight ${el.country}`} type="button" onClick={() => changeHighlight()} value={el.country_code}><CircleFlag data-tip={el.country} height={0} countryCode={el.country_code.toLowerCase()} value={el.country_code} /></button>;
+                      return <button className={`flag_container ${el.country_code}`} key={el.country_code} data-tip={el.country} aria-label={`Highlight ${el.country}`} type="button" onClick={(event) => changeHighlight(event)} value={el.country_code}><CircleFlag data-tip={el.country} height={0} countryCode={el.country_code.toLowerCase()} value={el.country_code} /></button>;
                     }
                     return false;
                   })
@@ -172,7 +172,7 @@ function App() {
                 {
                   data[element].map(el => {
                     if (el.answer === null) {
-                      return <button className={`flag_container ${el.country_code}`} key={el.country_code} data-tip={el.country} aria-label={`Highlight ${el.country}`} type="button" onClick={() => changeHighlight()} value={el.country_code}><CircleFlag data-tip={el.country} height={0} countryCode={el.country_code.toLowerCase()} value={el.country_code} /></button>;
+                      return <button className={`flag_container ${el.country_code}`} key={el.country_code} data-tip={el.country} aria-label={`Highlight ${el.country}`} type="button" onClick={(event) => changeHighlight(event)} value={el.country_code}><CircleFlag data-tip={el.country} height={0} countryCode={el.country_code.toLowerCase()} value={el.country_code} /></button>;
                     }
                     return false;
                   })
