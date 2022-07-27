@@ -13,6 +13,8 @@ import ReactTooltip from 'react-tooltip';
 
 import CountryButton from './helpers/CountryButton.jsx';
 
+const appID = '#app-root-2022-wcp';
+
 function App() {
   // Data states.
   const [data, setData] = useState(false);
@@ -97,7 +99,7 @@ function App() {
   }, [data]);
 
   const changeHighlight = (event) => {
-    document.querySelectorAll('.flag_container').forEach((el) => {
+    document.querySelectorAll(`${appID} .flag_container`).forEach((el) => {
       el.classList.remove('highlighted');
       if (event.target.value === selectedCountry) {
         el.classList.remove('background');
