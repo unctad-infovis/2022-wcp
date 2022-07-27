@@ -2,6 +2,10 @@
 
 **Live demo** https://unctad-infovis.github.io/2022-wcp/
 
+## Used in
+
+* [UNCTAD Trade](https://twitter.com/UNCTADTrade/status/1551463552665505793)
+
 ## Rights of usage
 
 Contact Teemo Tebest.
