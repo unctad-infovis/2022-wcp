@@ -4,7 +4,8 @@
 
 ## Used in
 
-* [UNCTAD Trade](https://twitter.com/UNCTADTrade/status/1551463552665505793)
+* [UNCTAD Trade Twitter](https://twitter.com/UNCTADTrade/status/1551463552665505793)
+* [UNCTAD Trade Twitter](https://twitter.com/UNCTADTrade/status/1554006587005714432)
 
 ## Rights of usage
 
