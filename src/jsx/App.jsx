@@ -23,17 +23,17 @@ function App() {
 
   const cleanData = (json_data) => {
     const tmp_data = {
-      'Countries that carry out information and education initiatives(q71)': [],
-      'Countries that conduct research and analysis on consumer protection issues(q77)': [],
-      'Countries that have designated a consumer protection contact point(q0)': [],
-      'Countries where the agency carries out initiatives for vulnerable and disadvantaged consumers(q73)': [],
-      'Countries whose Constitution contains a provision on consumer protection(q7)': [],
-      'Countries with Cross-border out-of-court alternative consumer dispute resolution initiatives(q53)': [],
-      'Countries with a law/decree that governs the main consumer protection authority/agency(q26)': [],
-      'Countries with a main consumer protection authority/agency (q19)': [],
-      'Countries with a specific law(s) on consumer protection(q9)': [],
-      'Countries with experience in cross-border cooperation on enforcement(q67)': [],
-      'Countries with non-governmental consumer organizations/associations(q39)': []
+      'Countries that have designated a consumer protection contact point': [],
+      'Countries whose Constitution contains a provision on consumer protection': [],
+      'Countries with a specific law(s) on consumer protection': [],
+      'Countries with a main consumer protection authority/agency': [],
+      'Countries with a law/decree that governs the main consumer protection authority/agency': [],
+      'Countries with non-governmental consumer organizations/associations': [],
+      'Countries with experience in cross-border cooperation on enforcement': [],
+      'Countries that carry out information and education initiatives': [],
+      'Countries that conduct research and analysis on consumer protection issues': [],
+      'Countries with Cross-border out-of-court alternative consumer dispute resolution initiatives': [],
+      'Countries where the agency carries out initiatives for vulnerable and disadvantaged consumers': []
     };
 
     json_data.forEach((el) => {
@@ -56,7 +56,7 @@ function App() {
   ));
 
   useEffect(() => {
-    const data_file = (window.location.href.includes('unctad.org')) ? '/sites/default/files/data-file/2022-wcp.json' : './assets/data/data.json';
+    const data_file = (window.location.href.includes('unctad.org')) ? 'https://storage.unctad.org/2022-wcp/assets/data/2022-wcp_data.json' : './assets/data/2022-wcp_data.json';
     try {
       d3.json(data_file).then((json_data) => {
         setData(cleanData(json_data));
@@ -98,6 +98,18 @@ function App() {
     createVis();
   }, [data]);
 
+  const changeQuestion = (question_id) => {
+    document.querySelectorAll(`${appID} .element_container`).forEach(el => {
+      el.style.display = 'none';
+      el.style.opacity = 0;
+    });
+    if (document.querySelector(`${appID} .element_${question_id}`) !== null) {
+      document.querySelector(`${appID} .element_${question_id}`).style.display = 'block';
+      document.querySelector(`${appID} .element_${question_id}`).style.opacity = 1;
+    }
+  };
+  window.changeQuestion = changeQuestion;
+
   const changeHighlight = (event) => {
     document.querySelectorAll(`${appID} .flag_container`).forEach((el) => {
       el.classList.remove('highlighted');
@@ -106,7 +118,7 @@ function App() {
       } else if (el.classList.contains(event.target.value)) {
         el.classList.remove('background');
         el.classList.add('highlighted');
-      } else if (event.target.value !== '') {
+      } else if (event.target.value !== '' && event.target.value !== 'false') {
         el.classList.add('background');
       } else {
         el.classList.remove('background');
@@ -118,7 +130,6 @@ function App() {
   return (
     <div className="app">
       <div className="search_container">
-        <h3>Highlight a country</h3>
         <select onChange={(event) => changeHighlight(event)} value={selectedCountry}>
           <option value={false}>Select a country to highlight</option>
           <option value={false} disabled="disabled">– – – – –</option>
