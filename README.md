@@ -27,4 +27,4 @@ For developing please refer to `package.json`
 
 ## How to update data
 
-Convert csv using [](https://shancarter.github.io/mr-data-converter/)
+Convert csv to json using [Mr. Data Converter](https://shancarter.github.io/mr-data-converter/)
