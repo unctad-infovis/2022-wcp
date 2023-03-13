@@ -2,7 +2,6 @@
 
 **Live demo** https://unctad-infovis.github.io/2022-wcp/
 
-
 ## Used in
 
 * [World consumer protection map](https://unctad.org/topic/competition-and-consumer-protection/consumer-protection-map)
@@ -27,4 +26,4 @@ For developing please refer to `package.json`
 
 ## How to update data
 
-Convert csv to json using [Mr. Data Converter](https://shancarter.github.io/mr-data-converter/)
+Convert `.csv` to `.json` using [Mr. Data Converter](https://shancarter.github.io/mr-data-converter/)
