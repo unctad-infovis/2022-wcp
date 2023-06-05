@@ -11,6 +11,8 @@ import IsVisible from 'react-is-visible';
 // https://www.npmjs.com/package/react-tooltip
 import ReactTooltip from 'react-tooltip';
 
+// Load helpers.
+import ChartContainer from './components/ChartContainer.jsx';
 import CountryButton from './helpers/CountryButton.jsx';
 
 const appID = '#app-root-2022-wcp';
@@ -20,6 +22,15 @@ function App() {
   const [data, setData] = useState(false);
   const [countries, setCountries] = useState(false);
   const [selectedCountry, setselectedCountry] = useState(false);
+  const [visualisationID, setVisualisationID] = useState('PlvBz');
+
+  useEffect(() => {
+    // eslint-disable-next-line no-unused-expressions,func-names
+    !(function () {
+      // eslint-disable-next-line no-restricted-syntax,no-void,guard-for-in
+      window.addEventListener('message', ((e) => { if (void 0 !== e.data['datawrapper-height']) { const t = document.querySelectorAll(`${appID} iframe`); for (const a in e.data['datawrapper-height']) for (let r = 0; r < t.length; r++) { if (t[r].contentWindow === e.source)t[r].style.height = `${e.data['datawrapper-height'][a]}px`; } } }));
+    }());
+  }, []);
 
   const cleanData = (json_data) => {
     const tmp_data = {
@@ -98,14 +109,15 @@ function App() {
     createVis();
   }, [data]);
 
-  const changeQuestion = (question_id) => {
+  const changeQuestion = (event_target) => {
     document.querySelectorAll(`${appID} .element_container`).forEach(el => {
       el.style.display = 'none';
       el.style.opacity = 0;
     });
-    if (document.querySelector(`${appID} .element_${question_id}`) !== null) {
-      document.querySelector(`${appID} .element_${question_id}`).style.display = 'block';
-      document.querySelector(`${appID} .element_${question_id}`).style.opacity = 1;
+    if (document.querySelector(`${appID} .element_${event_target.value}`) !== null) {
+      document.querySelector(`${appID} .element_${event_target.value}`).style.display = 'block';
+      document.querySelector(`${appID} .element_${event_target.value}`).style.opacity = 1;
+      setVisualisationID(document.querySelector(`${appID} .option_${event_target.value}`).dataset.vis);
     }
   };
   window.changeQuestion = changeQuestion;
@@ -129,7 +141,27 @@ function App() {
 
   return (
     <div className="app">
-      <div className="search_container">
+      <h2>Analysis per Yes/No questions</h2>
+      <div className="change_question">
+        <select onChange={(event) => window.changeQuestion(event.target)}>
+          <option value="0" className="option_0" data-vis="PlvBz">Countries that have designated a consumer protection contact point</option>
+          <option value="1" className="option_1" data-vis="IZqad">Countries whose Constitution contains a provision on consumer protection</option>
+          <option value="2" className="option_2" disabled>Countries with a specific law(s) on consumer protection</option>
+          <option value="3" className="option_3" disabled>Countries with a main consumer protection authority/agency</option>
+          <option value="4" className="option_4" disabled>Countries with a law/decree that governs the main consumer protection authority/agency</option>
+          <option value="5" className="option_5" disabled>Countries with non-governmental consumer organizations/associations</option>
+          <option value="6" className="option_6" disabled>Countries with Cross-border out-of-court alternative consumer dispute resolution initiatives</option>
+          <option value="7" className="option_7" disabled>Countries that carry out information and education initiatives</option>
+          <option value="8" className="option_8" disabled>Countries that conduct research and analysis on consumer protection issues</option>
+          <option value="9" className="option_9" disabled>Countries with experience in cross-border cooperation on enforcement</option>
+          <option value="10" className="option_10" disabled>Countries where the agency carries out initiatives for vulnerable and disadvantaged consumers</option>
+        </select>
+        <div className="instructions">Change the question above to see the answers in the visualisations below.</div>
+      </div>
+      <div className="map_container">
+        <ChartContainer src={`https://datawrapper.dwcdn.net/${visualisationID}`} title="" />
+      </div>
+      <div className="search_container hidden">
         <select onChange={(event) => changeHighlight(event)} value={selectedCountry}>
           <option value={false}>Select a country to highlight</option>
           <option value={false} disabled="disabled">– – – – –</option>
@@ -144,7 +176,6 @@ function App() {
         {
           data && Object.keys(data).map((element, i) => (
             <div key={element} className={`element_${i} element_container`}>
-              <h3>{element}</h3>
               <IsVisible once>
                 {(isVisible) => (
                   <div className="answer_yes">
