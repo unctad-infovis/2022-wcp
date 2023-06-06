@@ -141,7 +141,7 @@ function App() {
 
   return (
     <div className="app">
-      <h2>Analysis per Yes/No questions</h2>
+      <h3>Analysis per Yes/No questions</h3>
       <div className="change_question">
         <select onChange={(event) => window.changeQuestion(event.target)}>
           <option value="0" className="option_0" data-vis="PlvBz">Countries that have designated a consumer protection contact point</option>
