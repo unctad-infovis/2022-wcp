@@ -22,7 +22,7 @@ function App() {
   const [data, setData] = useState(false);
   const [countries, setCountries] = useState(false);
   const [selectedCountry, setselectedCountry] = useState(false);
-  const [visualisationID, setVisualisationID] = useState('PlvBz');
+  const [visualisationID, setVisualisationID] = useState('false');
 
   useEffect(() => {
     // eslint-disable-next-line no-unused-expressions,func-names
@@ -34,15 +34,15 @@ function App() {
 
   const cleanData = (json_data) => {
     const tmp_data = {
-      'Countries that have designated a consumer protection contact point': [],
+      // 'Countries that have designated a consumer protection contact point': [],
       'Countries whose Constitution contains a provision on consumer protection': [],
-      'Countries with a specific law(s) on consumer protection': [],
-      'Countries with a main consumer protection authority/agency': [],
-      'Countries with a law/decree that governs the main consumer protection authority/agency': [],
+      // 'Countries with a specific law(s) on consumer protection': [],
+      // 'Countries with a main consumer protection authority/agency': [],
+      // 'Countries with a law/decree that governs the main consumer protection authority/agency': [],
       'Countries with non-governmental consumer organizations/associations': [],
       'Countries with experience in cross-border cooperation on enforcement': [],
       'Countries that carry out information and education initiatives': [],
-      'Countries that conduct research and analysis on consumer protection issues': [],
+      // 'Countries that conduct research and analysis on consumer protection issues': [],
       'Countries with Cross-border out-of-court alternative consumer dispute resolution initiatives': [],
       'Countries where the agency carries out initiatives for vulnerable and disadvantaged consumers': []
     };
@@ -141,25 +141,26 @@ function App() {
 
   return (
     <div className="app">
-      <h3>Analysis per Yes/No questions</h3>
+      <h2>Highlighted questions</h2>
       <div className="change_question">
         <select onChange={(event) => window.changeQuestion(event.target)}>
-          <option value="0" className="option_0" data-vis="PlvBz">Countries that have designated a consumer protection contact point</option>
+          <option value="0" className="option_0" data-vis="false" disabled selected>Select desired question</option>
+          {/* <option value="0" className="option_0" data-vis="PlvBz">Countries that have designated a consumer protection contact point</option> */}
           <option value="1" className="option_1" data-vis="IZqad">Countries whose Constitution contains a provision on consumer protection</option>
-          <option value="2" className="option_2" disabled>Countries with a specific law(s) on consumer protection</option>
-          <option value="3" className="option_3" disabled>Countries with a main consumer protection authority/agency</option>
-          <option value="4" className="option_4" disabled>Countries with a law/decree that governs the main consumer protection authority/agency</option>
-          <option value="5" className="option_5" disabled>Countries with non-governmental consumer organizations/associations</option>
-          <option value="6" className="option_6" disabled>Countries with Cross-border out-of-court alternative consumer dispute resolution initiatives</option>
-          <option value="7" className="option_7" disabled>Countries that carry out information and education initiatives</option>
-          <option value="8" className="option_8" disabled>Countries that conduct research and analysis on consumer protection issues</option>
-          <option value="9" className="option_9" disabled>Countries with experience in cross-border cooperation on enforcement</option>
-          <option value="10" className="option_10" disabled>Countries where the agency carries out initiatives for vulnerable and disadvantaged consumers</option>
+          {/* <option value="2" className="option_2" disabled>Countries with a specific law(s) on consumer protection</option> */}
+          {/* <option value="3" className="option_3" disabled>Countries with a main consumer protection authority/agency</option> */}
+          {/* <option value="4" className="option_4" disabled>Countries with a law/decree that governs the main consumer protection authority/agency</option> */}
+          <option value="2" className="option_2" data-vis="">Countries with non-governmental consumer organizations/associations</option>
+          <option value="3" className="option_3" data-vis="">Countries with Cross-border out-of-court alternative consumer dispute resolution initiatives</option>
+          <option value="4" className="option_4" data-vis="">Countries that carry out information and education initiatives</option>
+          {/* <option value="8" className="option_8" disabled>Countries that conduct research and analysis on consumer protection issues</option> */}
+          <option value="5" className="option_5" data-vis="">Countries with experience in cross-border cooperation on enforcement</option>
+          <option value="6" className="option_6" data-vis="">Countries where the agency carries out initiatives for vulnerable and disadvantaged consumers</option>
         </select>
         <div className="instructions">Change the question above to see the answers in the visualisations below.</div>
       </div>
       <div className="map_container">
-        <ChartContainer src={`https://datawrapper.dwcdn.net/${visualisationID}`} title="" />
+        {(visualisationID !== 'false' && visualisationID !== '') && <ChartContainer src={`https://datawrapper.dwcdn.net/${visualisationID}`} title="" />}
       </div>
       <div className="search_container hidden">
         <select onChange={(event) => changeHighlight(event)} value={selectedCountry}>
@@ -175,11 +176,11 @@ function App() {
       <div className="vis_container">
         {
           data && Object.keys(data).map((element, i) => (
-            <div key={element} className={`element_${i} element_container`}>
+            <div key={element} className={`element_${i + 1} element_container`}>
               <IsVisible once>
                 {(isVisible) => (
                   <div className="answer_yes">
-                    {isVisible && createVis(`element_${i}`)}
+                    {isVisible && createVis(`element_${i + 1}`)}
                     <h4>{`Yes, ${data[element].filter(el => el.answer === 1).length} countries`}</h4>
                     {
                       data[element].map(el => ((el.answer === 1) ? <CountryButton key={el.country_code} el={el} changeHighlight={changeHighlight} /> : null))
