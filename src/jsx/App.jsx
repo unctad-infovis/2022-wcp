@@ -146,16 +146,16 @@ function App() {
         <select onChange={(event) => window.changeQuestion(event.target)}>
           <option value="0" className="option_0" data-vis="false" disabled selected>Select desired question</option>
           {/* <option value="0" className="option_0" data-vis="PlvBz">Countries that have designated a consumer protection contact point</option> */}
-          <option value="1" className="option_1" data-vis="IZqad">Countries whose Constitution contains a provision on consumer protection</option>
+          <option value="1" className="option_1" data-vis="jFPjd">Countries whose Constitution contains a provision on consumer protection</option>
           {/* <option value="2" className="option_2" disabled>Countries with a specific law(s) on consumer protection</option> */}
           {/* <option value="3" className="option_3" disabled>Countries with a main consumer protection authority/agency</option> */}
           {/* <option value="4" className="option_4" disabled>Countries with a law/decree that governs the main consumer protection authority/agency</option> */}
-          <option value="2" className="option_2" data-vis="">Countries with non-governmental consumer organizations/associations</option>
-          <option value="3" className="option_3" data-vis="">Countries with Cross-border out-of-court alternative consumer dispute resolution initiatives</option>
-          <option value="4" className="option_4" data-vis="">Countries that carry out information and education initiatives</option>
+          <option value="2" className="option_2" data-vis="PlvBz">Countries with non-governmental consumer organizations/associations</option>
+          <option value="3" className="option_3" data-vis="Hn4lH">Countries with Cross-border out-of-court alternative consumer dispute resolution initiatives</option>
+          <option value="4" className="option_4" data-vis="NOJK0">Countries that carry out information and education initiatives</option>
           {/* <option value="8" className="option_8" disabled>Countries that conduct research and analysis on consumer protection issues</option> */}
-          <option value="5" className="option_5" data-vis="">Countries with experience in cross-border cooperation on enforcement</option>
-          <option value="6" className="option_6" data-vis="">Countries where the agency carries out initiatives for vulnerable and disadvantaged consumers</option>
+          <option value="5" className="option_5" data-vis="1fuTH">Countries with experience in cross-border cooperation on enforcement</option>
+          <option value="6" className="option_6" data-vis="XZyxw">Countries where the agency carries out initiatives for vulnerable and disadvantaged consumers</option>
         </select>
         <div className="instructions">Change the question above to see the answers in the visualisations below.</div>
       </div>

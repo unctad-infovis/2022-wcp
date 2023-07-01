@@ -1,4 +1,4 @@
-Country Code,Country name,Code2Digit,answer,Countries that have designated a consumer protection contact point,Countries whose Constitution contains a provision on consumer protection,Countries with a specific law(s) on consumer protection,Countries with a main consumer protection authority/agency ,Countries with a law/decree that governs the main consumer protection authority/agency,Countries with non-governmental consumer organizations/associations,Countries with experience in cross-border cooperation on enforcement,Countries that carry out information and education initiatives,Countries that conduct research and analysis on consumer protection issues,Countries with Cross-border out-of-court alternative consumer dispute resolution initiatives,Countries where the agency carries out initiatives for vulnerable and disadvantaged consumers
+Country Code,Country  name,Code2Digit,answer,Countries that have designated a consumer protection contact point,Countries whose Constitution contains a provision on consumer protection,Countries with a specific law(s) on consumer protection,Countries with a main consumer protection authority/agency ,Countries with a law/decree that governs the main consumer protection authority/agency,Countries with non-governmental consumer organizations/associations,Countries with experience in cross-border cooperation on enforcement,Countries that carry out information and education initiatives,Countries that conduct research and analysis on consumer protection issues,Countries with Cross-border out-of-court alternative consumer dispute resolution initiatives,Countries where the agency carries out initiatives for vulnerable and disadvantaged consumers
 AND,Andorra,AD,1,1,1,1,1,0,0,0,1,0,1,0
 AFG,Afghanistan,AF,0,0,,,,,,,,,,
 ALB,Albania,AL,1,1,1,1,0,1,1,1,1,1,0,0
@@ -59,7 +59,7 @@ EST,Estonia,EE,0,0,,,,,,,,,,
 SWZ,Eswatini,SZ,0,0,,,,,,,,,,
 ETH,Ethiopia,ET,1,1,0,1,1,1,1,0,1,,0,1
 FAL,Falkland Islands (Malvinas). A dispute exists between the Governments of Argentina and the United Kingdom of Great Britain and Northern Ireland concerning sovereignty over the Falkland Islands (Malvinas).,FK,0,1,,,,,,,,,,
-FJI,Fiji,FJ,0,0,,,,,,,,,,
+FJI,Fiji,FJ,0,1,,,,,,,,,,
 FIN,Finland,FI,1,1,0,1,1,1,1,1,1,1,1,1
 FRA,France,FR,1,1,0,1,1,1,1,1,1,0,1,0
 GAB,Gabon,GA,1,1,0,0,1,1,1,0,0,0,0,1
@@ -71,7 +71,7 @@ GRC,Greece,GR,1,1,0,1,1,1,1,,1,0,1,1
 GRD,Grenada,GD,0,0,,,,,,,,,,
 GTM,Guatemala,GT,1,1,1,1,1,1,1,,0,0,0,0
 GIN,Guinea,GN,0,0,,,,,,,,,,
-GNB,Guinea Bissau,GW,1,0,0,0,0,,1,,,,,
+GNB,Guinea Bissau,GW,1,1,0,0,0,,1,,,,,
 GUY,Guyana,GY,1,1,1,1,1,1,1,0,1,1,1,1
 HTI,Haiti,HT,0,0,,,,,,,,,,
 HND,Honduras,HN,0,1,,,,,,,,,,
@@ -131,7 +131,7 @@ OMN,Oman,OM,1,1,0,1,1,1,1,0,1,1,0,
 PAK,Pakistan,PK,1,1,0,1,0,0,1,1,1,1,0,0
 PLW,Palau,PW,0,0,,,,,,,,,,
 PAN,Panama,PA,1,1,1,1,1,1,1,1,1,1,0,1
-PNG,Papua New Guinea,PG,0,0,,,,,,,,,,
+PNG,Papua New Guinea,PG,1,1,1,1,1,,,,,,,
 PRY,Paraguay,PY,1,1,1,1,1,1,0,0,1,1,0,1
 PER,Peru,PE,1,1,1,1,1,1,1,,1,1,0,1
 PHL,Philippines,PH,1,1,1,1,1,1,1,0,1,1,1,0
@@ -148,7 +148,7 @@ LCA,Saint Lucia,LC,0,0,,,,,,,,,,
 VCT,Saint Vincent and the Grenadines,VC,0,0,,,,,,,,,,
 WSM,Samoa,WS,1,1,0,1,1,1,0,0,1,1,0,
 SMR,San Marino,SM,0,0,,,,,,,,,,
-STP,Sao Tome and Principe,ST,0,0,,,,,,,,,,
+STP,Sao Tome and Principe,ST,0,1,,,,,,,,,,
 SAU,Saudi Arabia,SA,1,1,1,1,1,1,1,1,1,1,0,1
 SEN,Senegal,SN,1,1,1,1,0,,1,0,1,1,0,0
 SRB,Serbia,RS,1,1,1,1,1,1,1,,1,1,0,0
@@ -175,7 +175,7 @@ THA,Thailand,TH,1,1,1,1,1,1,1,1,1,1,1,1
 MKD,The former Yugoslav Republic of Macedonia,MK,0,0,,,,,,,,,,
 TLS,Timor-Leste,TL,1,1,1,1,1,1,1,,1,1,0,0
 TGO,Togo,TG,1,1,1,1,1,1,1,0,1,1,0,1
-TON,Tonga,TO,0,0,,,,,,,,,,
+TON,Tonga,TO,0,1,,,,,,,,,,
 TTO,Trinidad and Tobago,TT,1,1,0,1,1,1,0,0,1,1,0,0
 TUN,Tunisia,TN,1,1,0,1,1,1,1,0,0,1,1,0
 TUR,Turkey,TR,1,1,1,1,1,0,1,1,1,1,1,1
