@@ -22,7 +22,7 @@ function App() {
   const [data, setData] = useState(false);
   const [countries, setCountries] = useState(false);
   const [selectedCountry, setselectedCountry] = useState(false);
-  const [visualisationID, setVisualisationID] = useState('false');
+  const [visualisationID, setVisualisationID] = useState('PlvBz');
 
   useEffect(() => {
     // eslint-disable-next-line no-unused-expressions,func-names
@@ -34,15 +34,15 @@ function App() {
 
   const cleanData = (json_data) => {
     const tmp_data = {
-      // 'Countries that have designated a consumer protection contact point': [],
+      'Countries that have designated a consumer protection contact point': [],
       'Countries whose Constitution contains a provision on consumer protection': [],
-      // 'Countries with a specific law(s) on consumer protection': [],
-      // 'Countries with a main consumer protection authority/agency': [],
-      // 'Countries with a law/decree that governs the main consumer protection authority/agency': [],
+      'Countries with a specific law(s) on consumer protection': [],
+      'Countries with a main consumer protection authority/agency': [],
+      'Countries with a law/decree that governs the main consumer protection authority/agency': [],
       'Countries with non-governmental consumer organizations/associations': [],
       'Countries with experience in cross-border cooperation on enforcement': [],
       'Countries that carry out information and education initiatives': [],
-      // 'Countries that conduct research and analysis on consumer protection issues': [],
+      'Countries that conduct research and analysis on consumer protection issues': [],
       'Countries with Cross-border out-of-court alternative consumer dispute resolution initiatives': [],
       'Countries where the agency carries out initiatives for vulnerable and disadvantaged consumers': []
     };
@@ -70,6 +70,7 @@ function App() {
     const data_file = (window.location.href.includes('unctad.org')) ? 'https://storage.unctad.org/2022-wcp/assets/data/2022-wcp_data.json' : './assets/data/2022-wcp_data.json';
     try {
       d3.json(data_file).then((json_data) => {
+        console.log(cleanData(json_data));
         setData(cleanData(json_data));
         setCountries(getCountries(json_data));
       });
@@ -143,25 +144,25 @@ function App() {
     <div className="app">
       <h2>Highlighted questions</h2>
       <div className="change_question">
-        <select onChange={(event) => window.changeQuestion(event.target)}>
-          <option value="0" className="option_0" data-vis="false" disabled selected>Select desired question</option>
-          {/* <option value="0" className="option_0" data-vis="PlvBz">Countries that have designated a consumer protection contact point</option> */}
+        <select onChange={(event) => window.changeQuestion(event.target)} defaultValue="0">
+          <option value="0" className="option_0" data-vis="PlvBz">Countries that have designated a consumer protection contact point</option>
           <option value="1" className="option_1" data-vis="jFPjd">Countries whose Constitution contains a provision on consumer protection</option>
-          {/* <option value="2" className="option_2" disabled>Countries with a specific law(s) on consumer protection</option> */}
-          {/* <option value="3" className="option_3" disabled>Countries with a main consumer protection authority/agency</option> */}
-          {/* <option value="4" className="option_4" disabled>Countries with a law/decree that governs the main consumer protection authority/agency</option> */}
-          <option value="2" className="option_2" data-vis="PlvBz">Countries with non-governmental consumer organizations/associations</option>
-          <option value="3" className="option_3" data-vis="Hn4lH">Countries with Cross-border out-of-court alternative consumer dispute resolution initiatives</option>
-          <option value="4" className="option_4" data-vis="NOJK0">Countries that carry out information and education initiatives</option>
-          {/* <option value="8" className="option_8" disabled>Countries that conduct research and analysis on consumer protection issues</option> */}
-          <option value="5" className="option_5" data-vis="1fuTH">Countries with experience in cross-border cooperation on enforcement</option>
-          <option value="6" className="option_6" data-vis="XZyxw">Countries where the agency carries out initiatives for vulnerable and disadvantaged consumers</option>
+          <option value="2" className="option_2" data-vis="sIY50">Countries with a specific law(s) on consumer protection</option>
+          <option value="3" className="option_3" data-vis="Xo8op">Countries with a main consumer protection authority/agency</option>
+          <option value="4" className="option_4" data-vis="wSZ11">Countries with a law/decree that governs the main consumer protection authority/agency</option>
+          <option value="5" className="option_5" data-vis="J3v5V">Countries with non-governmental consumer organizations/associations</option>
+          <option value="6" className="option_6" data-vis="Hn4lH">Countries with Cross-border out-of-court alternative consumer dispute resolution initiatives</option>
+          <option value="7" className="option_7" data-vis="NOJK0">Countries that carry out information and education initiatives</option>
+          <option value="8" className="option_8" data-vis="1fuTH">Countries that conduct research and analysis on consumer protection issues</option>
+          <option value="9" className="option_9" data-vis="XZyxw">Countries with experience in cross-border cooperation on enforcement</option>
+          <option value="10" className="option_10" data-vis="w9i80">Countries where the agency carries out initiatives for vulnerable and disadvantaged consumers</option>
         </select>
         <div className="instructions">Change the question above to see the answers in the visualisations below.</div>
       </div>
       <div className="map_container">
         {(visualisationID !== 'false' && visualisationID !== '') && <ChartContainer src={`https://datawrapper.dwcdn.net/${visualisationID}`} title="" />}
       </div>
+      {/* Hidden for a reason */}
       <div className="search_container hidden">
         <select onChange={(event) => changeHighlight(event)} value={selectedCountry}>
           <option value={false}>Select a country to highlight</option>
@@ -176,11 +177,11 @@ function App() {
       <div className="vis_container">
         {
           data && Object.keys(data).map((element, i) => (
-            <div key={element} className={`element_${i + 1} element_container`}>
+            <div key={element} className={`element_${i} element_container`}>
               <IsVisible once>
                 {(isVisible) => (
                   <div className="answer_yes">
-                    {isVisible && createVis(`element_${i + 1}`)}
+                    {isVisible && createVis(`element_${i}`)}
                     <h4>{`Yes, ${data[element].filter(el => el.answer === 1).length} countries`}</h4>
                     {
                       data[element].map(el => ((el.answer === 1) ? <CountryButton key={el.country_code} el={el} changeHighlight={changeHighlight} /> : null))
@@ -203,6 +204,9 @@ function App() {
             </div>
           ))
         }
+      </div>
+      <div className="chart_container">
+        <iframe title="Overview of highlighted questions" aria-label="Grouped Bars" id="datawrapper-chart-8zI1Z" src="https://datawrapper.dwcdn.net/8zI1Z/1/" scrolling="no" frameBorder="0" height="667" data-external="1" />
       </div>
       <ReactTooltip place="top" type="dark" effect="solid" />
       <noscript>Your browser does not support JavaScript!</noscript>

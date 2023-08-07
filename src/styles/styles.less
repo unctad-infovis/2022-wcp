@@ -56,10 +56,14 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin: auto auto;
+    margin: auto auto 20px auto;
     max-width: 900px;
     width: 100%;
     .element_container {
+      &.element_0 {
+        display: block;
+        opacity: 1;
+      }
       // margin-bottom: 50px;
       // width: calc(50%);
       box-sizing: border-box;
@@ -157,6 +161,16 @@
           z-index: 1;
         }
       }
+    }
+  }
+  .chart_container {
+    max-width: 900px;
+    margin: auto auto 20px auto;
+    iframe {
+      border: none;
+      min-height: 400px;
+      min-width: 100% !important;
+      width: 0;
     }
   }
 }
