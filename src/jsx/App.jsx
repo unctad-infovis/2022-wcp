@@ -35,7 +35,7 @@ function App() {
   const cleanData = (json_data) => {
     const tmp_data = {
       'Countries that have designated a consumer protection contact point': [],
-      'Countries whose Constitution contains a provision on consumer protection': [],
+      'Countries whose constitution contains a provision on consumer protection': [],
       'Countries with a specific law(s) on consumer protection': [],
       'Countries with a main consumer protection authority/agency': [],
       'Countries with a law/decree that governs the main consumer protection authority/agency': [],
@@ -43,7 +43,7 @@ function App() {
       'Countries with experience in cross-border cooperation on enforcement': [],
       'Countries that carry out information and education initiatives': [],
       'Countries that conduct research and analysis on consumer protection issues': [],
-      'Countries with Cross-border out-of-court alternative consumer dispute resolution initiatives': [],
+      'Countries with cross-border out-of-court alternative consumer dispute resolution initiatives': [],
       'Countries where the agency carries out initiatives for vulnerable and disadvantaged consumers': []
     };
 
@@ -146,15 +146,15 @@ function App() {
       <div className="change_question">
         <select onChange={(event) => window.changeQuestion(event.target)} defaultValue="0">
           <option value="0" className="option_0" data-vis="PlvBz">Countries that have designated a consumer protection contact point</option>
-          <option value="1" className="option_1" data-vis="jFPjd">Countries whose Constitution contains a provision on consumer protection</option>
+          <option value="1" className="option_1" data-vis="jFPjd">Countries whose constitution contains a provision on consumer protection</option>
           <option value="2" className="option_2" data-vis="sIY50">Countries with a specific law(s) on consumer protection</option>
           <option value="3" className="option_3" data-vis="Xo8op">Countries with a main consumer protection authority/agency</option>
           <option value="4" className="option_4" data-vis="wSZ11">Countries with a law/decree that governs the main consumer protection authority/agency</option>
           <option value="5" className="option_5" data-vis="J3v5V">Countries with non-governmental consumer organizations/associations</option>
-          <option value="6" className="option_6" data-vis="Hn4lH">Countries with Cross-border out-of-court alternative consumer dispute resolution initiatives</option>
+          <option value="6" className="option_6" data-vis="Hn4lH">Countries with experience in cross-border cooperation on enforcement</option>
           <option value="7" className="option_7" data-vis="NOJK0">Countries that carry out information and education initiatives</option>
-          <option value="8" className="option_8" data-vis="1fuTH">Countries that conduct research and analysis on consumer protection issues</option>
-          <option value="9" className="option_9" data-vis="XZyxw">Countries with experience in cross-border cooperation on enforcement</option>
+          <option value="8" className="option_8" data-vis="XZyxw">Countries that conduct research and analysis on consumer protection issues</option>
+          <option value="9" className="option_9" data-vis="1fuTH">Countries with cross-border out-of-court alternative consumer dispute resolution initiatives</option>
           <option value="10" className="option_10" data-vis="w9i80">Countries where the agency carries out initiatives for vulnerable and disadvantaged consumers</option>
         </select>
         <div className="instructions">Change the question above to see the answers in the visualisations below.</div>
