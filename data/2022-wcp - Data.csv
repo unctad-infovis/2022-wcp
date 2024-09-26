@@ -51,7 +51,7 @@ DJI,Djibouti,DJ,0,0,,,,,,,,,,
 DMA,Dominica,DM,0,0,,,,,,,,,,
 DOM,Dominican Republic,DO,1,1,1,1,1,1,1,0,1,1,1,1
 ECU,Ecuador,EC,0,1,,,,,,,,,,
-EGY,Egypt,EG,0,1,1,1,1,,,,,,,
+EGY,Egypt,EG,1,1,1,1,1,,,,,,,
 SLV,El Salvador,SV,1,1,1,1,1,1,1,0,1,1,0,0
 GNQ,Equatorial Guinea,GQ,0,0,,,,,,,,,,
 ERI,Eritrea,ER,0,0,,,,,,,,,,
@@ -125,7 +125,7 @@ NLD,Netherlands,NL,1,1,0,1,1,1,1,1,1,1,1,0
 NZL,New Zealand,NZ,1,1,1,1,1,1,1,0,1,0,0,1
 NIC,Nicaragua,NI,0,1,,,,,,,,,,
 NER,Niger,NE,0,1,,,,,,,,,,
-NGA,Nigeria,NG,0,1,1,1,1,,1,,,,,
+NGA,Nigeria,NG,1,1,1,1,1,,1,,,,,
 NOR,Norway,NO,1,1,0,1,1,,,,,,,
 OMN,Oman,OM,1,1,0,1,1,1,1,0,1,1,0,
 PAK,Pakistan,PK,1,1,0,1,0,0,1,1,1,1,0,0
