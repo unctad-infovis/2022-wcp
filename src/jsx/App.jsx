@@ -47,10 +47,8 @@ function App() {
       'Countries where the agency carries out initiatives for vulnerable and disadvantaged consumers': []
     };
 
-    console.log(tmp_data);
     json_data.forEach((el) => {
       Object.keys(tmp_data).forEach(element => {
-        console.log(element);
         tmp_data[element].push({
           answer: el[element],
           country: el['Country name'],
