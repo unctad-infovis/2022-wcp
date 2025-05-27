@@ -47,8 +47,10 @@ function App() {
       'Countries where the agency carries out initiatives for vulnerable and disadvantaged consumers': []
     };
 
+    console.log(tmp_data);
     json_data.forEach((el) => {
       Object.keys(tmp_data).forEach(element => {
+        console.log(element);
         tmp_data[element].push({
           answer: el[element],
           country: el['Country name'],
@@ -70,7 +72,6 @@ function App() {
     const data_file = (window.location.href.includes('unctad.org')) ? 'https://storage.unctad.org/2022-wcp/assets/data/2022-wcp_data.json' : './assets/data/2022-wcp_data.json';
     try {
       d3.json(data_file).then((json_data) => {
-        console.log(cleanData(json_data));
         setData(cleanData(json_data));
         setCountries(getCountries(json_data));
       });
