@@ -160,6 +160,18 @@ function App() {
       </div>
       <div className="map_container">
         {(visualisationID !== 'false' && visualisationID !== '') && <ChartContainer src={`https://datawrapper.dwcdn.net/${visualisationID}`} title="" />}
+        <span className="caption">
+          <em>Source:</em>
+          {' '}
+          UN Trade and Development (UNCTAD), 2025
+          <br />
+          <em>Note:</em>
+          {' '}
+          Data in light grey are not available,
+          {' '}
+          <a href="https://unctad.org/page/map-disclaimer" target="_blank" rel="noreferrer">Map disclaimer</a>
+          , https://unctad.org/map-disclaimer
+        </span>
       </div>
       {/* Hidden for a reason */}
       <div className="search_container hidden">
