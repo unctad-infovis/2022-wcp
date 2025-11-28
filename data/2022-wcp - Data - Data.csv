@@ -34,7 +34,7 @@ CAN,Canada,CA,,1,,,,,,,,,,
 CAF,Central African Republic,CF,,0,,,,,,,,,,
 TCD,Chad,TD,1,1,1,1,0,0,1,0,1,1,,0
 CHL,Chile,CL,1,1,0,1,1,1,1,0,1,1,0,1
-CHN,China,CN,,1,,,,,,,,,,
+CHN,China,CN,1,1,,1,1,1,,,,,,
 COL,Colombia,CO,1,1,1,1,1,1,1,1,1,0,1,1
 COM,Comoros,KM,,0,,,,,,,,,,
 COG,Congo,CG,,1,,,,,,,,,,
@@ -59,7 +59,7 @@ EST,Estonia,EE,,0,,,,,,,,,,
 SWZ,Eswatini,SZ,,0,,,,,,,,,,
 ETH,Ethiopia,ET,1,1,0,1,1,1,1,0,1,0,0,1
 FAL,"Falkland Islands (Malvinas), ""A dispute exists between the Governments of Argentina and the United Kingdom of Great Britain and Northern Ireland concerning sovereignty over the Falkland Islands (Malvinas).""",FK,,1,,,,,,,,,,
-FJI,Fiji,FJ,,0,,,,,,,,,,
+FJI,Fiji,FJ,1,1,1,1,1,,,,,,,
 FIN,Finland,FI,1,1,0,1,1,1,1,1,1,1,1,1
 FRA,France,FR,1,1,0,1,1,1,1,1,1,0,1,0
 GAB,Gabon,GA,1,1,0,0,1,1,1,0,0,0,0,1
@@ -118,7 +118,7 @@ MNE,Montenegro,ME,,0,,,,,,,,,,
 MAR,Morocco,MA,1,1,0,1,1,1,1,0,1,0,0,0
 MOZ,Mozambique,MZ,1,1,1,1,1,1,1,,1,0,0,
 MMR,Myanmar,MM,,1,,,,,,,,,,
-NAM,Namibia,NA,1,1,0,0,1,0,1,0,0,0,0,0
+NAM,Namibia,NA,1,1,1,0,0,0,0,0,0,0,0,0
 NRU,Nauru,NR,,0,,,,,,,,,,
 NPL,Nepal,NP,,1,,,,,,,,,,
 NLD,Netherlands,NL,1,1,0,1,1,1,1,1,1,1,1,0
