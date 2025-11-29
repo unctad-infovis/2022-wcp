@@ -67,7 +67,7 @@ function App() {
   ));
 
   useEffect(() => {
-    const data_file = (window.location.href.includes('unctad.org')) ? 'https://storage.unctad.org/2022-wcp/assets/data/2022-wcp_data.json' : './assets/data/2022-wcp_data.json';
+    const data_file = (window.location.href.includes('unctad.org')) ? 'https://storage.unctad.org/2022-wcp/assets/data/2022-wcp_data.json?v=1' : './assets/data/2022-wcp_data.json';
     try {
       d3.json(data_file).then((json_data) => {
         setData(cleanData(json_data));
@@ -157,6 +157,21 @@ function App() {
           <option value="10" className="option_10" data-vis="w9i80">Countries where the agency carries out initiatives for vulnerable and disadvantaged consumers</option>
         </select>
         <div className="instructions">Change the question above to see the answers in the visualisations below.</div>
+      </div>
+      <div className="map_container">
+        {(visualisationID !== 'false' && visualisationID !== '') && <ChartContainer src={`https://datawrapper.dwcdn.net/${visualisationID}`} title="" />}
+        {/* <span className="caption">
+          <em>Source:</em>
+          {' '}
+          UN Trade and Development (UNCTAD), 2025
+          <br />
+          <em>Note:</em>
+          {' '}
+          Data in light grey are not available,
+          {' '}
+          <a href="https://unctad.org/page/map-disclaimer" target="_blank" rel="noreferrer">Map disclaimer</a>
+          , https://unctad.org/map-disclaimer
+        </span> */}
       </div>
       {/* Hidden for a reason */}
       <div className="search_container hidden">
