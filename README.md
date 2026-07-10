@@ -6,6 +6,19 @@
 
 An interactive widget for UNCTAD's World Consumer Protection Map. Users pick a question from a dropdown (e.g. "Countries with a specific law(s) on consumer protection") to switch between 11 Datawrapper maps, and browse a flag grid of every country grouped by yes/no/no-answer for the selected question, with click-to-highlight cross-referencing between the flag grid and the map.
 
+## Embedding
+
+```html
+<script type="module" crossorigin="" src="https://storage.unctad.org/2022-wcp/js/2022-wcp.min.js?v=1"></script>
+<link rel="stylesheet" crossorigin="" href="https://storage.unctad.org/2022-wcp/css/2022-wcp.min.css?v=1">
+<div class="app-root-2022-wcp" id="app-root-2022-wcp">
+  Loading...
+</div>
+<noscript>Your browser does not support Javascript!</noscript>
+```
+
+Update the `?v=` query parameter to match the current build version to bust the cache.
+
 ### Used in
 
 * [World consumer protection map](https://unctad.org/topic/competition-and-consumer-protection/consumer-protection-map)
