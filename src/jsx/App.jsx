@@ -5,6 +5,7 @@ import Article from '../Article.mdx';
 import ConsumerProtectionExplorer from './components/ConsumerProtectionExplorer.jsx';
 
 import '@unctad-infovis/general-tools/styles/styles.css';
+import './App.css';
 
 const components = {
   ConsumerProtectionExplorer

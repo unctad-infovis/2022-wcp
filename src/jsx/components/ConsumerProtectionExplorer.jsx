@@ -1,10 +1,10 @@
 // https://d3js.org/
+import useIsVisible from '@unctad-infovis/general-tools/helpers/UseIsVisible.js';
 import * as d3 from 'd3';
 import { useEffect, useState } from 'react';
-import loadFile from './../helpers/LoadFile.js';
-import useIsVisible from '@unctad-infovis/general-tools/helpers/UseIsVisible.js';
+import loadFile from '@unctad-infovis/general-tools/helpers/LoadFile.js';
 import CountryButton from './CountryButton.jsx';
-import ChartDataWrapper from './general/ChartDataWrapper.jsx';
+import ChartDataWrapper from '@unctad-infovis/general-tools/components/ChartDataWrapper.jsx';
 
 import './ConsumerProtectionExplorer.css';
 
@@ -114,13 +114,14 @@ function ConsumerProtectionExplorer() {
   const [visualisationID, setVisualisationID] = useState('PlvBz');
 
   useEffect(() => {
-    loadFile('assets/data/2022-wcp_data.json').then(json => {
-      if (json) {
-        const json_data = JSON.parse(json);
-        setData(cleanData(json_data));
-        setCountries(getCountries(json_data));
-      }
-    });
+    loadFile('assets/data/2022-wcp_data.json')
+      .then(r => r?.json())
+      .then(json_data => {
+        if (json_data) {
+          setData(cleanData(json_data));
+          setCountries(getCountries(json_data));
+        }
+      });
   }, []);
 
   const changeQuestion = event_target => {

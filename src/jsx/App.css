@@ -1,0 +1,8 @@
+.app {
+  .consumer_protection_explorer {
+    figure.container_chart_data_wrapper {
+      max-width: 1350px;
+      width: 100%;
+    }
+  }
+}
