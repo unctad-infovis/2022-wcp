@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import useIsVisible from './../../helpers/UseIsVisible';
+import useIsVisible from '@unctad-infovis/general-tools/helpers/UseIsVisible.js';
 
 import './ChartDataWrapper.css';
 

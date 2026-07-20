@@ -1,4 +1,4 @@
-import basePath from './BasePath.js';
+import basePath from '@unctad-infovis/general-tools/helpers/BasePath.js';
 
 const loadFile = async file => {
   try {

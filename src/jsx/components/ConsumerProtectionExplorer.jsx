@@ -2,7 +2,7 @@
 import * as d3 from 'd3';
 import { useEffect, useState } from 'react';
 import loadFile from './../helpers/LoadFile.js';
-import useIsVisible from './../helpers/UseIsVisible.js';
+import useIsVisible from '@unctad-infovis/general-tools/helpers/UseIsVisible.js';
 import CountryButton from './CountryButton.jsx';
 import ChartDataWrapper from './general/ChartDataWrapper.jsx';
 
