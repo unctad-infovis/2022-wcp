@@ -19,7 +19,7 @@ An interactive widget for UNCTAD's World Consumer Protection Map. Users pick a q
 
 Update the `?v=` query parameter to match the current build version to bust the cache.
 
-### Used in
+## Used in
 
 * [World consumer protection map](https://unctad.org/topic/competition-and-consumer-protection/consumer-protection-map)
 * [UNCTAD Trade Twitter](https://twitter.com/UNCTADTrade/status/1551463552665505793)
@@ -35,7 +35,7 @@ Contact Teemo Tebest.
 This is a Vite + React project.
 
 * `npm install`
-* `npm start`
+* `npm run start`
 
 Project should start at: http://localhost:8080
 
@@ -63,7 +63,7 @@ The following packages are used in this project by default.
 
 ### Project specific
 
-* **d3** - used for the flag-grid reveal animation
+* **d3** — used for the flag-grid reveal animation
 
 ### Build & Dev Server
 
