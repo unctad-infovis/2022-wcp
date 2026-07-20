@@ -1,10 +1,10 @@
 // https://d3js.org/
+import ChartDataWrapper from '@unctad-infovis/general-tools/components/ChartDataWrapper.jsx';
+import loadFile from '@unctad-infovis/general-tools/helpers/LoadFile.js';
 import useIsVisible from '@unctad-infovis/general-tools/helpers/UseIsVisible.js';
 import * as d3 from 'd3';
 import { useEffect, useState } from 'react';
-import loadFile from '@unctad-infovis/general-tools/helpers/LoadFile.js';
 import CountryButton from './CountryButton.jsx';
-import ChartDataWrapper from '@unctad-infovis/general-tools/components/ChartDataWrapper.jsx';
 
 import './ConsumerProtectionExplorer.css';
 
