@@ -1,4 +1,4 @@
-import CircleFlag from './general/CircleFlag.jsx';
+import CircleFlag from '@unctad-infovis/general-tools/components/CircleFlag.jsx';
 
 function CountryButton({ el, changeHighlight }) {
   return (
