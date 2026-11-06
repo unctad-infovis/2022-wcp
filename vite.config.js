@@ -32,6 +32,7 @@ export default defineConfig(({ command }) => ({
     }
   },
   define: {
+    __BUILD_ID__: JSON.stringify(Date.now().toString()),
     __PROJECT_NAME__: JSON.stringify(name)
   },
   plugins: [{ enforce: 'pre', ...mdx() }, react()],

@@ -114,7 +114,7 @@ function ConsumerProtectionExplorer() {
   const [visualisationID, setVisualisationID] = useState('PlvBz');
 
   useEffect(() => {
-    loadFile('assets/data/2022-wcp_data.json')
+    loadFile(`assets/data/2022-wcp_data.json?v=${__BUILD_ID__}`)
       .then(r => r?.json())
       .then(json_data => {
         if (json_data) {

@@ -56,6 +56,7 @@ All source code goes to folder `src`.
 1. Edit or replace `data/2022-wcp - Data - Data.csv` (keep the header row and column order).
 2. Run `npm run convert-data` to regenerate `public/assets/data/2022-wcp_data.json`.
 3. Run `npm run build` and deploy.
+4. Bump the `?v=` query parameter in the embed code on unctad.org. The JSON is requested with a per-build `?v=<build id>` (`__BUILD_ID__` in `vite.config.js`), so the CDN does not serve a stale copy of the data, but the page only loads the new JS once its own `?v=` changes.
 
 ## Packages
 
