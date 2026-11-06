@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import csvToJson from '../src/jsx/helpers/CsvToJson.js';
+import csvToJson from '@unctad-infovis/general-tools/helpers/CsvToJson.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const csvPath = path.join(__dirname, '..', 'data', '2022-wcp - Data - Data.csv');
